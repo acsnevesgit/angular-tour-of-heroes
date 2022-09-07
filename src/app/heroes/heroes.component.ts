@@ -11,14 +11,7 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
   // Define a component property called heroes to expose the HEROES array for binding
-  selectedHero?: Hero;
   heroes: Hero[] = [];
-
-  // Add a hero object
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
 
   // Reserve the constructor for minimal initialization such as wiring constructor parameters to properties. 
   // The constructor shouldn't do anything! It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
@@ -28,12 +21,6 @@ export class HeroesComponent implements OnInit {
   // Let Angular call ngOnInit() at an appropriate time after constructing a HeroesComponent instance
   ngOnInit(): void {
     this.getHeroes();
-  }
-
-  // Add the following onSelect() method, which assigns the clicked hero from the template to the component's selectedHero
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`); // Display a history of each time the user clicks on a hero
   }
 
   // If getHeroes() can't return immediately with hero data, it shouldn't be synchronous, because that would block the browser as it waits to return data.
